@@ -12,14 +12,17 @@
     <ul>
       <% skill.forEach(function(t) { %>
         <li>
-          <a href="/skill/<%= t.id %>">
+          <div id="skills-container">
+          <a href="/skills/<%= t.id %>">
           <%= t.skill %>
           </a>
             - 
           <%= t.done ? 'done' : 'not done' %>
         </li>
+      </div>
       <% }); %>
     </ul>
+    <a id="new-skill" href="/skills/new">Add New Skill</a>
   </body>
 
 </html>

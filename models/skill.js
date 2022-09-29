@@ -1,5 +1,5 @@
 const skills = [
-    {id: 125223, skill: 'Learn JavaScript', done: true},
+    {id: 125434, skill: 'Learn JavaScript', done: true},
     {id: 127904, skill: 'Learn Express', done: true},
     {id: 139608, skill: 'Learn Django', done: false},
     {id: 542346, skill: 'Learn FullStack', done: false}
@@ -7,7 +7,8 @@ const skills = [
   
   module.exports = {
     getAll,
-    getOne
+    getOne,
+    create
   };
   
   function getAll() {
@@ -19,5 +20,11 @@ const skills = [
     id = parseInt(id);
     // The Array.prototype.find iterator method is
     // ideal for finding objects within an array
-    return skills.find(todo => skills.id === id);
+    return skills.find(skill => skill.id === id);
+  }
+
+  function create(skill){
+    skill.id = Date.now() % 1000000
+    skill.done = false
+    skills.push(skill)
   }

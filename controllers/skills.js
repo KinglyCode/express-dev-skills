@@ -1,22 +1,33 @@
  // controllers/todos.js
- const Chore = require('../models/skill')
+ const Skill = require('../models/skill')
  
  module.exports = {
     index,
-    show
+    show,
+    new: newSkill,
+    create
  }
 
  function index(req, res) {
     res.render('skills/index', {
-      skill: Chore.getAll(),
+      skill: Skill.getAll(),
       title: 'Express Chores'
     });
   };
 
   function show(req, res) {
     res.render('skills/show', {
-    skill: Chore.getOne(req.params.id),
+    skill: Skill.getOne(req.params.id),
     title: 'Express Chores'
     })
+  }
+
+  function newSkill(req, res){
+    res.render('skills/new')
+  }
+
+  function create(req, res){
+    Skill.create(req.body)
+    res.redirect('/skills')
   }
  
